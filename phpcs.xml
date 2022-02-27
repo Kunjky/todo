@@ -5,15 +5,16 @@
 
     <file>./app</file>
     <file>./core</file>
+    <file>./tests</file>
 
     <exclude-pattern>./app/views</exclude-pattern>
-    <exclude-pattern>./tests</exclude-pattern>
-    
+    <!-- <exclude-pattern>./tests</exclude-pattern> -->
+
     <!-- Add PSR1 standard -->
     <rule ref="PSR1"></rule>
 
-    <!-- Add PSR2 standard -->
-    <rule ref="PSR2"></rule>
+    <!-- Add PSR12 standard -->
+    <rule ref="PSR12"></rule>
 
     <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
         <properties>

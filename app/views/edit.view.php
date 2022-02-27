@@ -19,9 +19,9 @@
             <div class="form-group row">
                 <label>Status</label>
                 <select class="form-control" name="status">
-                    <option value="0" <?= $task->status == 0 ? 'selected' : '' ?>>PLANNING</option>
-                    <option value="1" <?= $task->status == 1 ? 'selected' : '' ?>>DOING</option>
-                    <option value="2" <?= $task->status == 2 ? 'selected' : '' ?>>COMPLETED</option>
+                    <option value="<?= \App\Models\Task::STATUS_PLANNING ?>" <?= $task->status == \App\Models\Task::STATUS_PLANNING ? 'selected' : '' ?>>PLANNING</option>
+                    <option value="<?= \App\Models\Task::STATUS_DOING ?>" <?= $task->status == \App\Models\Task::STATUS_DOING ? 'selected' : '' ?>>DOING</option>
+                    <option value="<?= \App\Models\Task::STATUS_COMPLETE ?>" <?= $task->status == \App\Models\Task::STATUS_COMPLETE ? 'selected' : '' ?>>COMPLETED</option>
                 </select>
             </div>
             <div class="form-group row">

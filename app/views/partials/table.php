@@ -17,11 +17,11 @@
             <td><?= $task->start_date ?></td>
             <td><?= $task->end_date ?></td>
             <td>
-                <?php if ($task->status == 0): ?>
+                <?php if ($task->status == \App\Models\Task::STATUS_PLANNING): ?>
                     <span class="badge badge-primary">PLANNING</span>
-                <?php elseif ($task->status == 1): ?>
+                <?php elseif ($task->status == \App\Models\Task::STATUS_DOING): ?>
                     <span class="badge badge-secondary">DOING</span>
-                <?php elseif ($task->status == 2): ?>
+                <?php elseif ($task->status == \App\Models\Task::STATUS_COMPLETE): ?>
                     <span class="badge badge-success">COMPLETED</span>
                 <?php endif; ?>
             </td>
@@ -29,7 +29,7 @@
                 <a class="btn btn-primary" href="/tasks/edit?id=<?= $task->id ?>">EDIT</a>|
                 <form action="/tasks/delete" method="POST">
                     <input type="hidden" name="id" value="<?= $task->id ?>">
-                    <button 
+                    <button
                         class="btn btn-danger"
                         onclick="return confirm('Are you sure you want to delete this item?');">DELETE
                     </button>

@@ -14,7 +14,7 @@ class TaskController
      */
     public function __construct()
     {
-        $this->model = new Task;
+        $this->model = new Task();
     }
 
     /**

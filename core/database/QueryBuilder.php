@@ -56,7 +56,7 @@ class QueryBuilder
             $statement = $this->pdo->prepare($sql);
             $statement->execute($parameters);
         } catch (\Exception $e) {
-            return die($e->getMessage());
+            dd($e->getMessage());
         }
     }
 
@@ -90,7 +90,7 @@ class QueryBuilder
             $statement = $this->pdo->prepare($sql);
             $statement->execute($parameters);
         } catch (\Exception $e) {
-            return die($e->getMessage());
+            dd($e->getMessage());
         }
     }
 
@@ -113,7 +113,7 @@ class QueryBuilder
             $statement = $this->pdo->prepare($sql);
             $statement->execute();
         } catch (\Exception $e) {
-            return die($e->getMessage());
+            dd($e->getMessage());
         }
     }
 
@@ -138,7 +138,7 @@ class QueryBuilder
             $statement->execute();
             return $statement->fetchAll(PDO::FETCH_CLASS);
         } catch (\Exception $e) {
-            return die($e->getMessage());
+            dd($e->getMessage());
         }
     }
 }

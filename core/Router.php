@@ -21,7 +21,7 @@ class Router
      */
     public static function load($file)
     {
-        $router = new static;
+        $router = new static();
 
         require $file;
 
@@ -76,7 +76,7 @@ class Router
     protected function callAction($controller, $action)
     {
         $controller = "App\\Controllers\\{$controller}";
-        $controller = new $controller;
+        $controller = new $controller();
 
         if (! method_exists($controller, $action)) {
             throw new \Exception(

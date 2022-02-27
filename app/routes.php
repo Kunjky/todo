@@ -6,3 +6,4 @@
  // Tasks
  $router->get('', 'TaskController@index');
  $router->post('tasks/create', 'TaskController@store');
+ $router->post('tasks/update', 'TaskController@update');

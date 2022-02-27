@@ -6,6 +6,10 @@ use App\Core\Database\Connection;
 
 App::bind('config', require 'config.php');
 
+App::bind('define', require 'define.php');
+
 App::bind('database', new QueryBuilder(
     Connection::make(App::get('config')['database'])
 ));
+
+session_start();

@@ -10,7 +10,7 @@
 
     <form action="/tasks/create" method="POST">
         <input type="text" name="name">
-        <select name="status" id="">
+        <select name="status">
             <option value="0">Planning</option>
             <option value="1">Doing</option>
             <option value="2">Complete</option>
@@ -20,4 +20,6 @@
         <button>POST</button>
     </form>
 
+
+<?php require 'partials/alert.php'; ?>
 <?php require 'partials/footer.php'; ?>

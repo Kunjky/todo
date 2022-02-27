@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Task;
+use App\Core\App;
 
 class TaskController
 {
@@ -31,6 +32,13 @@ class TaskController
      */
     public function store()
     {
+        $errors = $this->checkValidation();
+
+        if (!empty($errors)) {
+            $_SESSION['errors'] = $errors;
+            return redirect('');
+        }
+
         $data = [
             'name' => $_POST['name'],
             'start_date' => $_POST['start_date'],
@@ -48,6 +56,13 @@ class TaskController
      */
     public function update()
     {
+        $errors = $this->checkValidation();
+
+        if (!empty($errors)) {
+            $_SESSION['errors'] = $errors;
+            return redirect('');
+        }
+
         $data = [
             'name' => $_POST['name'],
             'start_date' => $_POST['start_date'],
@@ -68,5 +83,28 @@ class TaskController
         $this->model->delete($_POST['id']);
 
         return redirect('');
+    }
+
+    /**
+     * Check validation.
+     */
+    public function checkValidation()
+    {
+        $regex = App::get('define')['regex'];
+
+        // regex validation
+        $errors = validate([
+            'name' => $regex['name'],
+            'start_date' => $regex['date'],
+            'end_date' => $regex['date'],
+            'status' => $regex['task_status'],
+        ]);
+
+        // custom validation
+        if ($_POST['start_date'] > $_POST['end_date']) {
+            $errors['end_date'] = 'end_date must be after start_date';
+        }
+
+        return $errors;
     }
 }

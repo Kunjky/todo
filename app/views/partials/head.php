@@ -15,5 +15,5 @@
     <title>Todo List</title>
 </head>
 <body>
-    <div class="container">
     <?php require 'nav.php'; ?>
+    <div class="container">

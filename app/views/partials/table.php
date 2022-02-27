@@ -6,7 +6,7 @@
             <th scope="col">Start Date</th>
             <th scope="col">End Date</th>
             <th scope="col">Status</th>
-            <th scope="col">Action</th>
+            <th scope="col" colspan="2" class="text-center">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -26,11 +26,13 @@
                 <?php endif; ?>
             </td>
             <td>
-                <a class="btn btn-primary" href="/tasks/edit?id=<?= $task->id ?>">EDIT</a>|
+                <a class="btn btn-sm btn-outline-primary" href="/tasks/edit?id=<?= $task->id ?>">EDIT</a>
+            </td>
+            <td>
                 <form action="/tasks/delete" method="POST">
                     <input type="hidden" name="id" value="<?= $task->id ?>">
                     <button
-                        class="btn btn-danger"
+                        class="btn btn-sm btn-outline-danger"
                         onclick="return confirm('Are you sure you want to delete this item?');">DELETE
                     </button>
                 </form>

@@ -1,11 +1,11 @@
 <?php require 'partials/head.php'; ?>
-<h1>Edit Task</h1>
+<h1 class="text-center">Edit Task</h1>
 
 <div class="row">
-    <div class="col-4">
+    <div class="col-3">
         <form action="/tasks/update" method="POST">
             <div class="form-group row">
-                <label>Task</label>
+                <label>Task Name</label>
                 <input type="text" class="form-control" placeholder="Task" name="name" value="<?= $task->name ?>">
             </div>
             <div class="form-group row">

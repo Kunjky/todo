@@ -34,7 +34,7 @@ $(document).ready(function () {
             editable: true,
             selectable: true,
             businessHours: true,
-            dayMaxEvents: true, // allow "more" link when too many events
+            dayMaxEvents: true,
             events: events
         });
 

@@ -54,7 +54,6 @@ class QueryBuilder
 
         try {
             $statement = $this->pdo->prepare($sql);
-
             $statement->execute($parameters);
         } catch (\Exception $e) {
             return die($e->getMessage());
@@ -113,6 +112,31 @@ class QueryBuilder
             );
             $statement = $this->pdo->prepare($sql);
             $statement->execute();
+        } catch (\Exception $e) {
+            return die($e->getMessage());
+        }
+    }
+
+    /**
+     * Get by id
+     *
+     * @param string $table table
+     * @param int    $id    id
+     *
+     * @return void
+     */
+    public function getById($table, $id)
+    {
+        $sql = sprintf(
+            "select * from %s where id = %s",
+            $table,
+            $id
+        );
+
+        try {
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute();
+            return $statement->fetchAll(PDO::FETCH_CLASS);
         } catch (\Exception $e) {
             return die($e->getMessage());
         }

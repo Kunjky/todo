@@ -47,6 +47,7 @@ class TaskController
         ];
 
         $this->model->insert($data);
+        $_SESSION['success'] = 'Create successfully';
 
         return redirect('');
     }
@@ -60,7 +61,7 @@ class TaskController
 
         if (!empty($errors)) {
             $_SESSION['errors'] = $errors;
-            return redirect('');
+            return redirect('tasks/edit?id=' . $_POST['id']);
         }
 
         $data = [
@@ -71,8 +72,19 @@ class TaskController
         ];
 
         $this->model->updateById($data, $_POST['id']);
+        $_SESSION['success'] = 'Update successfully';
 
         return redirect('');
+    }
+
+    /**
+     * Delete a task.
+     */
+    public function edit()
+    {
+        $task = $this->model->getById($_GET['id'])[0];
+
+        return view('edit', ['task' => $task]);
     }
 
     /**
@@ -81,6 +93,8 @@ class TaskController
     public function delete()
     {
         $this->model->delete($_POST['id']);
+
+        $_SESSION['success'] = 'Delete successfully';
 
         return redirect('');
     }

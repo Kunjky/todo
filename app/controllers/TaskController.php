@@ -18,13 +18,23 @@ class TaskController
     }
 
     /**
-     * Show all tasks.
+     * Show all tasks at homepage.
+     */
+    public function home()
+    {
+        $tasks = $this->model->all();
+
+        return view('home', ['tasks' => $tasks]);
+    }
+
+    /**
+     * Get all tasks.
      */
     public function index()
     {
         $tasks = $this->model->all();
 
-        return view('home', ['tasks' => $tasks]);
+        return responseJson($tasks);
     }
 
     /**
